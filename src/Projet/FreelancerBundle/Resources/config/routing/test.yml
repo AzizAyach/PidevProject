@@ -1,0 +1,10 @@
+test:
+    path:     /
+    defaults: { _controller: "ProjetFreelancerBundle:Test:index" }
+
+test_show:
+    path:     /{id}/show/
+    defaults: { _controller: "ProjetFreelancerBundle:Test:show" }
+
+
+

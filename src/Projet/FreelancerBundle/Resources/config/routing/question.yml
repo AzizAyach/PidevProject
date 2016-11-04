@@ -1,0 +1,11 @@
+question:
+    path:     /
+    defaults: { _controller: "ProjetFreelancerBundle:Question:index" }
+
+question_show:
+    path:     /{id}/show
+    defaults: { _controller: "ProjetFreelancerBundle:Question:show" }
+
+
+
+

@@ -1,0 +1,54 @@
+{% extends 'ProjetFreelancerBundle::layout.html.twig' %}
+
+{% block body -%}
+    <h1>Projet</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Affecte</th>
+                <td>{{ entity.affecte }}</td>
+            </tr>
+            <tr>
+                <th>Prixmin</th>
+                <td>{{ entity.prixmin }}</td>
+            </tr>
+            <tr>
+                <th>Prixmax</th>
+                <td>{{ entity.prixmax }}</td>
+            </tr>
+            <tr>
+                <th>Finalise</th>
+                <td>{{ entity.finalise }}</td>
+            </tr>
+            <tr>
+                <th>Dateprojet</th>
+                <td>{{ entity.dateprojet }}</td>
+            </tr>
+            <tr>
+                <th>Idoffre</th>
+                <td>{{ entity.idOffre }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+<div class="fb-comments" data-href="{url}" data-version="v2.3"></div>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('projet') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

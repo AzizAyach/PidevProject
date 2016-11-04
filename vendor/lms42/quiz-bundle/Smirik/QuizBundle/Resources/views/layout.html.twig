@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{  parent() }}
+    {% stylesheets
+    '@SmirikQuizBundle/Resources/public/css/*' %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen"/>
+    {% endstylesheets %}
+{% endblock %}
