@@ -1,0 +1,8 @@
+projet:
+    path:     /
+    defaults: { _controller: "ProjetFreelancerBundle:Projet:index" }
+
+projet_show:
+    path:     /{id}/show
+    defaults: { _controller: "ProjetFreelancerBundle:Projet:show" }
+

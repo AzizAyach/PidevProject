@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Projet\FreelancerBundle\Entity\AsoTest" table="aso_test">
+    <indexes>
+      <index name="id_test" columns="id_test"/>
+      <index name="id_quest" columns="id_quest"/>
+    </indexes>
+    <id name="idAs" type="integer" column="id_as">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idTest" target-entity="Test">
+      <join-columns>
+        <join-column name="id_test" referenced-column-name="id_test"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idQuest" target-entity="Question">
+      <join-columns>
+        <join-column name="id_quest" referenced-column-name="id_quest"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

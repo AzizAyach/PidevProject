@@ -1,0 +1,46 @@
+<script src="{{ asset('bundles/Projetfreelancer/js/mytest.js')}}"></script>
+{% block body -%}
+    <h1>Question</h1>
+
+    <table class="record_properties">
+        <a href="{{ path('question_show', { 'id': entity.idquest+1 }) }}" onclick="Quiz();">Question Suivante</a>
+
+        <tbody>
+            <tr>
+                <th>Question : </th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>R/ 1</th>
+                <td><input id="r1" name='r1' type="radio" value = "1">{{ entity.Reponsecorrect }}</td>
+            </tr>
+            <tr>
+                <th>R/ 2</th>
+                
+                <td><input id="r2" name='r2' type="radio" value = "2">{{ entity.reponseFausse1 }}</td>
+            </tr>
+            <tr>
+                <th>R/ 3</th>
+                <td><input id="r3" name='r3' type="radio" value = "3">{{ entity.reponseFausse2 }}</td>
+            </tr>
+            <tr>
+                <th>R/ 4</th>
+                <td><input id="r4" name='r4' type="radio" value = "4">{{ entity.reponseFausse3 }}</td>
+            </tr>
+            <tr>
+                <th>R/ 5</th>
+                <td><input id="r5" name='r5' type="radio" value = "5">{{ entity.reponseFausse4 }}</td>
+            </tr>
+            <tr>
+                <th>R/ indice</th>
+                <td><input type="text" id="resultat" style="visibility: visible" value="{{ entity.indice }}"/></td>
+            </tr>
+            <tr>
+                 <th>Note</th>
+                 <td> </td>
+            </tr>
+        </tbody>
+    </table>
+<div id="test">
+   </div>
+{% endblock %}

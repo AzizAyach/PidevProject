@@ -1,0 +1,76 @@
+columns:
+    id:
+        label: Id
+        name: id
+        type: integer
+        builder: simple
+        options:
+            listable: true
+            editable: false
+            sortable: true
+            filterable: true
+    quiz:
+        label: Quiz
+        name: quiz
+        type: collection
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    text:
+        label: Text
+        name: text
+        type: text
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+        templates:
+            list: SmirikQuizBundle:Admin/Column:text.html.twig
+    type:
+        label: Type
+        name: type
+        type: string
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    file:
+        label: File
+        name: file
+        type: string
+        builder: simple
+        options:
+            listable: false
+            editable: true
+            sortable: true
+            filterable: true
+    num_answers:
+        label: 'Number of answers'
+        name: num_answers
+        type: integer
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+actions:
+    new:
+        route: admin_questions_new
+        extends: new
+    edit:
+        route: admin_questions_edit
+        extends: edit
+    delete:
+        route: admin_questions_delete
+        extends: delete
+templates:
+    form:
+        edit: SmirikQuizBundle:Admin/Question:edit.html.twig

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Projet\FreelancerBundle\Entity\Freelancer" table="freelancer">
+    <indexes>
+      <index name="jeton" columns="jeton"/>
+      <index name="evaluation" columns="evaluation"/>
+      <index name="email" columns="email"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="email" type="string" column="email" length="50" nullable="false"/>
+    <field name="motdepasse" type="string" column="motdepasse" length="20" nullable="false"/>
+    <field name="nom" type="string" column="nom" length="50" nullable="false"/>
+    <field name="prenom" type="string" column="prenom" length="50" nullable="false"/>
+    <field name="pays" type="string" column="pays" length="50" nullable="true"/>
+    <field name="ville" type="string" column="ville" length="50" nullable="true"/>
+    <field name="addresse" type="string" column="addresse" length="50" nullable="true"/>
+    <field name="cv" type="blob" column="cv" nullable="true"/>
+    <field name="specialite" type="string" column="specialite" length="50" nullable="true"/>
+    <field name="jeton" type="integer" column="jeton" nullable="false"/>
+    <field name="evaluation" type="string" column="evaluation" length="11" nullable="true"/>
+    <field name="telephone" type="integer" column="telephone" nullable="false"/>
+  </entity>
+</doctrine-mapping>

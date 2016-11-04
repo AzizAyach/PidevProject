@@ -1,0 +1,51 @@
+<script src="{{ asset('bundles/Projetfreelancer/js/mytest.js')}}"></script>
+
+
+{% block body -%}
+    <h1>Test</h1>
+
+    <table class="record_properties">
+       
+         
+        <a href="{{ path('question_show', { 'id': entity2.idquest+1 }) }}">Question Suivante</a>
+
+            <tr>
+                <th><b> ID QUESTION</b></th> 
+                <td>{{ entity2.idquest }}</td>                
+            </tr> 
+            <tr>
+                <th>Question</th>
+              <input type="radio" value = "{{ entity2.nom }}">           
+            </tr>
+            
+            <tr>
+                <th>Reponse 1</th>
+                <td>{{ entity2.reponsefausse1 }}</td>                
+            </tr>
+            <tr>
+                <th>Reponse 2</th>
+                <td>{{ entity2.reponsefausse2 }}</td>                
+            </tr>
+            <tr>
+                <th>Reponse 3</th>
+                <td>{{ entity2.reponsefausse3 }}</td>                
+            </tr>
+            <tr>
+                <th>Reponse 4</th>
+                <td>{{ entity2.reponsefausse4 }}</td>                
+            </tr>
+            <tr>
+                <th>Reponse 5</th>
+                <td>{{ entity2.reponsecorrect }}</td>                
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('test') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

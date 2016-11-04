@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Question list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Reponsecorrect</th>
+                <th>Reponsefausse1</th>
+                <th>Reponsefausse2</th>
+                <th>Reponsefausse3</th>
+                <th>Reponsefausse4</th>
+                <th>Idcategorie</th>
+                <th>Idquest</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('question_show', { 'id': entity.idQuest }) }}">{{ entity.nom }}</a></td>
+                <td>{{ entity.reponseCorrect }}</td>
+                <td>{{ entity.reponseFausse1 }}</td>
+                <td>{{ entity.reponseFausse2 }}</td>
+                <td>{{ entity.reponseFausse3 }}</td>
+                <td>{{ entity.reponseFausse4 }}</td>
+                <td>{{ entity.idCategorie }}</td>
+                <td>{{ entity.idQuest }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('question_show', { 'id': entity.idQuest }) }}">show</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

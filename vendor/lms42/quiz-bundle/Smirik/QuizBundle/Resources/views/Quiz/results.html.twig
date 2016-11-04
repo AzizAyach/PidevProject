@@ -1,0 +1,48 @@
+{% extends 'SmirikQuizBundle::layout.html.twig' %}
+
+{% block title %}{{ 'Quizes results'|trans }}{% endblock %}
+
+{% block header %}
+    {{ 'Quizes'|trans }} <small>{{ 'results'|trans }}</small>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <ul class="pull-right breadcrumb">
+        <li>
+            <a href="{{ path("homepage") }}" title="dashboard">Главная</a>
+            <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="{{ path("account_my") }}">Результаты</a>
+            <span class="divider">/</span>
+        </li>
+        <li>{{ "Тесты"|trans }}</li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{{ 'Title'|trans }}</th>
+        <th>{{ 'Correct answers'|trans }}</th>
+        <th>{{ 'Number of questions'|trans }}</th>
+        <th>%</th>
+        <th>{{ 'Date'|trans }}</th>
+      </tr>
+    </thead>
+    {% for user_quiz in user_quizes %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ user_quiz.Quiz.title }}</td>
+        <td>{{ user_quiz.numRightAnswers }}</td>
+        <td>{{ user_quiz.Quiz.numQuestions }}</td>
+        <td>{{ '%10.0f'|format(user_quiz.numRightAnswers / user_quiz.Quiz.numQuestions * 100) }}%</td>
+        <td>{{ user_quiz.createdAt('Y-m-d H:i') }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

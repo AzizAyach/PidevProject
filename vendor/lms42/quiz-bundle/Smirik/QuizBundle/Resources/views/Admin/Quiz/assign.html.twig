@@ -1,0 +1,105 @@
+{% extends 'SmirikAdminBundle::layout.html.twig' %}
+
+{% block title %}{{ 'admin.quiz.users.title'|trans }}{% endblock %}
+
+{% block header %}
+    {{ 'admin.quiz.users.title'|trans }} <small>{{ 'admin.quiz.users.title.comment'|trans }}</small>
+{% endblock %}
+
+{% block content %}
+    <div id="alerts">
+    </div>
+
+    <div class="alert alert-success hide" id="alert_template">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ 'Success'|trans }}!</strong> {{ 'admin.quiz.assign.alert.success'|trans }}
+    </div>
+
+    <div id="content">
+    </div>
+
+    <script language="JavaScript">
+        success_text = "<strong>{{ 'Success'|trans }}!</strong> {{ 'admin.quiz.assign.alert.success'|trans }}";
+    </script>
+
+    <script language="JavaScript">
+        var default_route = '{{ path("admin_users_index", {"page": 1, "sort": "id", "sort_type" : "asc", "filter" : "" }) }}';
+        var default_error_message = "{{ 'Try again later'|trans }}."
+        var default_error_title = "{{ 'Error'|trans }}!"
+        $('.alert-place').ajaxError(function (event, request, settings) {
+            $('.progress').hide();
+            var alert;
+            if (request.status >= 500) {
+                alert = new alertMessage(default_error_title, default_error_message, 'error').appendTo(this);
+            } else {
+                alert = new alertMessage(default_error_title, default_error_message).appendTo(this);
+            }
+            alert.alert();
+        });
+        var alertMessage = function (header, text, type) {
+            var body = $('<div/>').addClass('alert');
+            if (typeof type != 'undefined') {
+                body.addClass('alert-' + type);
+            }
+            var close = $('<button/>').html('&times;').attr('type', 'button').attr('data-dismiss', 'alert').addClass('close').appendTo(body);
+            $('<strong/>').html(header).appendTo(body);
+            $('<span/>').html('&nbsp;').appendTo(body);
+            $('<span/>').html(text).appendTo(body);
+            return body;
+        }
+        $(document).on("click", ".user-task-review-action-type", function (e) {
+            var button = $(e.target);
+            button.parents('form').find('input[name=action]').val(button.attr('name'));
+        });
+        $(document).on("submit", "form.user-task-review", function (e) {
+            e.preventDefault();
+            var form = $(e.target);
+            $.post(form.attr('action'), form.serialize(), function (data) {
+                if (data.result && $('#object' + data.result).length > 0) {
+                    $('#object' + data.result).hide();
+                }
+                form.find('.btn-close').trigger('click');
+            }, 'json');
+        });
+        var loadContent = function (path) {
+            $('.progress').show();
+            $.ajaxSetup({
+                cache:false
+            });
+            $.get(path, $('form.filterable').serialize(), function (html) {
+                $('.progress').hide();
+                $('#content').html(html);
+                $('.ajax_object_action').tomodal();
+            }, 'html');
+        }
+
+        var linkToContent = function (el) {
+            var link = $(el).attr('href') ? $(el).attr('href') : $(el).data('href');
+            if (!el) return false;
+            loadContent(el);
+        };
+        $(document).on("click", ".sortable", function (e) {
+            e.preventDefault();
+            linkToContent(this);
+        });
+        $(document).on("click", ".pagination a", function (e) {
+            e.preventDefault();
+            linkToContent(this);
+        });
+
+        $(document).ready(function (e) {
+
+            loadContent(default_route);
+            $(document).on("click", ".btn-danger", function (e) {
+                e.preventDefault();
+                if (confirm('{{'Are you sure?'|trans}}')) {
+                    linkToContent(this);
+                }
+            });
+        });
+    </script>
+
+    <a href="#" onclick="assign({{ quiz.id }}, '{{ route }}', success_text)" class="btn">{{ 'admin.quiz.assign'|trans }}</a>
+
+
+{% endblock %}

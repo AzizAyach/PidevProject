@@ -1,0 +1,46 @@
+{% extends 'ProjetFreelancerBundle::layout.html.twig' %}
+
+
+{% block body -%}
+    <h1>Projet list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Affecte</th>
+                <th>Prixmin</th>
+                <th>Prixmax</th>
+                <th>Finalise</th>
+                <th>Dateprojet</th>
+                <th>Idoffre</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('projet_show', { 'id': entity.id }) }}">{{ entity.nom }}</a></td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.affecte }}</td>
+                <td>{{ entity.prixmin }}</td>
+                <td>{{ entity.prixmax }}</td>
+                <td>{{ entity.finalise }}</td>
+                <td>{{ entity.dateprojet }}</td>
+                <td>{{ entity.idOffre }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('projet_show', { 'id': entity.id }) }}">Afficher projet</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

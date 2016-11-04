@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Projet\FreelancerBundle\Entity\Question" table="question">
+    <indexes>
+      <index name="id_categorie" columns="id_categorie"/>
+      <index name="id_test" columns="id_test"/>
+      <index name="reponse_fausse1" columns="reponse_fausse1"/>
+    </indexes>
+    <id name="idQuest" type="integer" column="id_quest">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="255" nullable="false"/>
+    <field name="reponseCorrect" type="string" column="reponse_correct" length="255" nullable="false"/>
+    <field name="reponseFausse1" type="string" column="reponse_fausse1" length="255" nullable="false"/>
+    <field name="reponseFausse2" type="string" column="reponse_fausse2" length="255" nullable="false"/>
+    <field name="reponseFausse3" type="string" column="reponse_fausse3" length="255" nullable="false"/>
+    <field name="reponseFausse4" type="string" column="reponse_fausse4" length="255" nullable="false"/>
+    <field name="idCategorie" type="string" column="id_categorie" length="50" nullable="false"/>
+    <many-to-one field="idTest" target-entity="Test">
+      <join-columns>
+        <join-column name="id_test" referenced-column-name="id_test"/>
+      </join-columns>
+    </many-to-one>
+    <field name="indice" type="integer" column="indice" length="2" nullable="true"/>
+  </entity>
+</doctrine-mapping>

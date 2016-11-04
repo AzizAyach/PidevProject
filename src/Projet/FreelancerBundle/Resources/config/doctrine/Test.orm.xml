@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Projet\FreelancerBundle\Entity\Test" table="test">
+    <unique-constraints>
+      <unique-constraint name="categorie_id_3" columns="categorie_id"/>
+    </unique-constraints>
+    <id name="idTest" type="integer" column="id_test">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="categorieId" type="string" column="categorie_id" length="20" nullable="false"/>
+  </entity>
+</doctrine-mapping>

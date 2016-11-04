@@ -1,0 +1,16 @@
+users:
+    resource: "@usersBundle/Resources/config/routing.yml"
+    prefix:   /
+
+projet_freelancer:
+    resource: "@ProjetFreelancerBundle/Resources/config/routing.yml"
+    prefix: /Freelancer
+
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /message
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
+    

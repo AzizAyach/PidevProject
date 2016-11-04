@@ -1,0 +1,34 @@
+{% extends 'ProjetFreelancerBundle::layout.html.twig' %}
+
+
+{% block body -%}
+    <h1>Test list</h1>
+    
+    <h3>Afin d'améliorer votre CV, et confirmer vos connaissance, vous pouvez enrichir votre Portfolio grace a nos test, qui couvre plusieurs métiers informatiques</h3>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Categorieid</th>
+                <th>Idtest</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('test_show', { 'id': entity.idTest }) }}">{{ entity.categorieId }}</a></td>
+                <td>{{ entity.idTest }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('test_show', { 'id': entity.idTest }) }}">Passer le Test</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

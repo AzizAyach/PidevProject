@@ -1,0 +1,29 @@
+projet_freelancer_question:
+    resource: "@ProjetFreelancerBundle/Resources/config/routing/question.yml"
+    prefix:   /question
+
+projet_freelancer_test:
+    resource: "@ProjetFreelancerBundle/Resources/config/routing/test.yml"
+    prefix:   /test
+
+projet_freelancer_projet:
+    resource: "@ProjetFreelancerBundle/Resources/config/routing/projet.yml"
+    prefix:   /projet
+
+projet_freelancer_freelancer:
+    resource: "@ProjetFreelancerBundle/Resources/config/routing/freelancer.yml"
+    prefix:   /freelancer
+
+projet_freelancer_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ProjetFreelancerBundle:Default:index }
+Afficher_accueil:
+    path: /accueil
+    defaults: { _controller: ProjetFreelancerBundle:Freelancer:Accueil }
+
+projet_freelancer_rechercher:
+    path: /projet/rechercher/{text}
+    defaults: { _controller: ProjetFreelancerBundle:Projet:rechercher }
+
+
+

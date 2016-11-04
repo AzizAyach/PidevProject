@@ -1,0 +1,33 @@
+
+
+
+<form id="form_recherche" action="{{ path('projet_freelancer_rechercher') }}" method="post">
+    {{ form_widget(form) }}
+    <input type="submit" value="Rechercher" />
+</form>
+<div class="loading"></div>
+<div id="resultats_recherche"> 
+    {% include 'ProjetFreelancerBundle:Projet:rechercher.html.twig' with {'Projet' : projet}  %}
+</div>
+
+<p><a href="{{ path('projet_freelancer_rechercher') }}">rechercher un Projet</a><p>
+
+<script>
+$(".loading").hide();
+$("#form_recherche").submit(function(){ 
+    $(".loading").show();
+    var motcle = $("#projetrecherche_motcle").val();
+    var DATA = 'motcle=' + motcle;
+    $.ajax({
+        type: "POST",
+        url: "{{ path('projet_freelancer_rechercher')}}",
+        data: DATA,
+        cache: false,
+        success: function(data){
+           $('#resultats_recherche').html(data);
+           $(".loading").hide();
+        }
+    });    
+    return false;
+});
+</script>

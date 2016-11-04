@@ -1,0 +1,74 @@
+{% extends 'ProjetFreelancerBundle::layout.html.twig' %}
+
+    
+    
+    {% block contenu %}
+<form method="POST">
+    Login:        <input type="text" name="Login"  /><br/>
+    Motdepasse:     <input type="text" name="Motdepasse"  /><br/>
+   
+    
+</form>
+    {% endblock contenu %}
+    {% block body -%}
+
+    <h1>Freelancer list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Motdepasse</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Pays</th>
+                <th>Ville</th>
+                <th>Addresse</th>
+                <th>Cv</th>
+                <th>Specialite</th>
+                <th>Jeton</th>
+                <th>Evaluation</th>
+                <th>Telephone</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('freelancer_show', { 'id': entity.id }) }}">{{ entity.email }}</a></td>
+                <td>{{ entity.motdepasse }}</td>
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.prenom }}</td>
+                <td>{{ entity.pays }}</td>
+                <td>{{ entity.ville }}</td>
+                <td>{{ entity.addresse }}</td>
+                <td>{{ entity.cv }}</td>
+                <td>{{ entity.specialite }}</td>
+                <td>{{ entity.jeton }}</td>
+                <td>{{ entity.evaluation }}</td>
+                <td>{{ entity.telephone }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('freelancer_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('freelancer_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('freelancer_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
